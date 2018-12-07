@@ -75,11 +75,19 @@ public class connectFour {
 					return 2;
 			}
 		}
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 4; j++) {
-				if (b[j][i] == 'X' && b[j+1][i] == 'X' && b[j+2][i] == 'X' && b[j+3][i] == 'X')
+		for (int j = 0; j < 8; j++) {
+			for (int i = 7; i > 4; i--) {
+				if (b[i][j] == 'X' && b[i-1][j] == 'X' && b[i-2][j] == 'X' && b[i-3][j] == 'X')
 					return 1;
-				if (b[j][i] == 'O' && b[j+1][i] == 'O' && b[j+2][i] == 'O' && b[j+3][i] == 'O')
+				if (b[i][j] == 'O' && b[i-1][j] == 'O' && b[i-2][j] == 'O' && b[i-3][j] == 'O')
+					return 2;
+			}
+		}
+		for (int i = 7; i >= 3; i--) {
+			for (int j = 0; j < 4; j++) {
+				if (b[i][j] == 'X' && b[i-1][j+1] == 'X' && b[i-2][j+2] == 'X' && b[i-3][j+3] == 'X')
+					return 1;
+				if (b[i][j] == 'O' && b[i-1][j+1] == 'O' && b[i-2][j+2] == 'O' && b[i-3][j+3] == 'O')
 					return 2;
 			}
 		}
@@ -87,6 +95,8 @@ public class connectFour {
 	}
 
 	public static void printBoard(char[][] b) {
+		for(int i = 0; i < b.length; i++) System.out.print(" " + (i+1));
+		System.out.println();
 		for (int row = 0; row < b.length; row++) {
 			System.out.println("-----------------");
 			for (int col = 0; col < b[0].length; col++) {
